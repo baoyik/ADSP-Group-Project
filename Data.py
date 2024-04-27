@@ -12,7 +12,6 @@ from statsmodels.stats.diagnostic import acorr_ljungbox
 from pmdarima import auto_arima
 from sktime.forecasting.base import ForecastingHorizon
 import warnings
-
 warnings.filterwarnings('ignore')
 
 import quandl 
@@ -24,7 +23,6 @@ import statsmodels.tsa.stattools as ts
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
 
-warnings.filterwarnings('ignore')
 
 myAPIkey = 'VPTMgg7k44QB9_2PCKWD'
 quandl.ApiConfig.api_key = myAPIkey
@@ -155,11 +153,11 @@ def plot_time_series_analysis(df, column):
         raise ValueError(f"Column '{column}' not found in the dataframe.")
     
     plt.figure(figsize=(6, 3))
-    plot_acf(df[column], lags=40, alpha=0.05)  # Adjust lags as necessary
+    plot_acf(df[column], lags=20, alpha=0.05)   
     plt.title('Autocorrelation Function')
     plt.show()
 
     plt.figure(figsize=(6, 3))
-    plot_pacf(df[column], lags=40, alpha=0.05, method='ywm')  # Adjust lags as necessary, method can be 'ywm' or 'ols'
+    plot_pacf(df[column], lags=20, alpha=0.05, method='ywm')   
     plt.title('Partial Autocorrelation Function')
     plt.show()
