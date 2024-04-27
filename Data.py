@@ -44,3 +44,12 @@ def split_time_series(data, train_ratio, val_ratio):
     
     return train_data, val_data, test_data
 
+def check_dataset(dataset):
+    if dataset.index.duplicated().any():
+        print("Dataset has duplicated index values.")
+    else: 
+        print("Dataset has no duplicated index values.")
+    if dataset.isnull().values.any():
+        print("Dataset has null values.")
+    else: 
+        print("Dataset has non-null values.")
