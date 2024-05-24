@@ -82,18 +82,18 @@ def analyze_residuals(residuals):
     plt.show()
 
 def evaluate_forecast(y_true, y_pred):
-    epsilon = 0
+    epsilon = 1e-8
     y_pred.index = y_true.index
     mae = mean_absolute_error(y_true, y_pred)
     mse = mean_squared_error(y_true, y_pred)
-    mape = np.mean(np.abs((y_true - y_pred) / (y_true + epsilon))) * 100
-    smape = 100 * np.mean(2 * np.abs(y_true - y_pred) / (np.abs(y_true) + np.abs(y_pred) + epsilon))
+    mape = np.mean(np.abs((y_true - y_pred) / (y_true + epsilon))) 
+    smape = np.mean(2 * np.abs(y_true - y_pred) / (np.abs(y_true) + np.abs(y_pred) + epsilon))
 
     metrics_df = pd.DataFrame({
         'MAE': [mae],
         'MSE': [mse],
-        'MAPE (%)': [mape],
-        'sMAPE (%)': [smape]
+        'MAPE': [mape],
+        'sMAPE': [smape]
     })
 
     return metrics_df
